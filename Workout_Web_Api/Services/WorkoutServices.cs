@@ -16,7 +16,9 @@ namespace WebApiMongoDB.Services
 
         public async Task CreateWorkoutAsync(Workout Workout) {
             await _ocarinaRepository.CreateWorkoutAsync(Workout);
-            await _ocarinaRepository.UpdateWorkoutOnDayReportAsync(Workout);
+
+            DayReport dayReport = await _ocarinaRepository.UpdateWorkoutOnDayReportAsync(Workout);
+            await _ocarinaRepository.UpdateWeekReportAsync(dayReport);
         }
 
         public async Task<List<Workout>> GetWorkoutsAsync()
@@ -26,16 +28,6 @@ namespace WebApiMongoDB.Services
         public async Task<DayReport> GetDayReportAsync()
         {
             DayReport dayReport =  await _ocarinaRepository.GetDayReportAsync();
-            var totalCaloriesBurnedOnDay = dayReport.Calories.Sum();
-
-            if (totalCaloriesBurnedOnDay >= 300) 
-            {
-                await _ocarinaRepository.UpdateCaloriesThresholdOnDayReportAsync(dayReport, true);
-            }
-            else
-            {
-                await _ocarinaRepository.UpdateCaloriesThresholdOnDayReportAsync(dayReport, true);
-            }
 
             return dayReport;
         }
@@ -47,16 +39,11 @@ namespace WebApiMongoDB.Services
             return allDayReport;
         }
 
-        public async Task<int> GetWeekIntensityAsync()
+        public async Task<List<WeekReport>> GetWeekReportsAsync()
         {
-            List<DayReport> weekReport = await _ocarinaRepository.GetWeekReportAsync();
-            int totalWeekIntensity = 0;
+            List<WeekReport> weekReports = await _ocarinaRepository.GetWeekReportsAsync();
 
-             weekReport.ForEach(dayReport=>
-             {
-                 totalWeekIntensity += dayReport.Intensity.Sum();
-             }) ;
-            return totalWeekIntensity;
+            return weekReports;
         }
     }
 }

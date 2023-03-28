@@ -6,5 +6,7 @@
         public string DatabaseName { get; set; } = null!;
         public string WorkoutCollectionName { get; set; } = null!;
         public string DayReportCollectionName { get; set; } = null!;
+        public string WeekReportCollectionName { get; set; } = null!;
+
     }
 }

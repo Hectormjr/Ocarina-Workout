@@ -6,12 +6,12 @@ namespace Workout_Web_Api.Repository
     {
         Task CreateWorkoutAsync(Workout Workout);
         //Task UpdateDayliCaloriesAsync(Workout Workout);
-        Task UpdateWorkoutOnDayReportAsync(Workout Workout);
+        Task<DayReport> UpdateWorkoutOnDayReportAsync(Workout Workout);
         Task<List<Workout>> GetWorkoutsAsync();
         Task<DayReport> GetDayReportAsync();
-        Task<List<DayReport>> GetWeekReportAsync();
-        Task UpdateCaloriesThresholdOnDayReportAsync(DayReport dayReport, bool ThresholdReached);
+        Task<List<WeekReport>> GetWeekReportsAsync();
         Task<List<DayReport>> GetAllDayReportsAsync();
+        Task UpdateWeekReportAsync(DayReport dayReport);
 
 
     }

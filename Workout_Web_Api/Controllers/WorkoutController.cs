@@ -50,12 +50,13 @@ namespace Workout_Web_Api.Controllers
         }
 
         [HttpGet]
-        [Route("GetWeekIntensity")]
-        public async Task<int> GetWeekIntensity()
+        [Route("GetWeekReports")]
+        public async Task<List<WeekReport>> GetWeekReports()
         {
-            var output = await _workoutServices.GetWeekIntensityAsync();
+            var output = await _workoutServices.GetWeekReportsAsync();
             return output;
 
         }
+
     }
 }

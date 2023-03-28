@@ -13,6 +13,9 @@ namespace Workout_Web_Api.Models
         [BsonElement("Date")]
         public DateTime Date { get; set; }
 
+        [BsonElement("WeekDay")]
+        public string WeekDay { get; set; }
+
         [BsonElement("Calories")]
         public List<int> Calories { get; set; }
 
@@ -27,6 +30,9 @@ namespace Workout_Web_Api.Models
 
         [BsonElement("TotalCalories")]
         public int TotalCalories { get; set; }
+
+        [BsonElement("TotalIntensity")]
+        public int TotalIntensity{ get; set; }
 
         [BsonElement("Variation")]
         public int Variation { get; set; }

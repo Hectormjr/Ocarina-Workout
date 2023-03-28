@@ -8,7 +8,7 @@ namespace Workout_Web_Api.Services
         Task CreateWorkoutAsync(Workout Workout);
         Task<List<Workout>> GetWorkoutsAsync();
         Task<DayReport> GetDayReportAsync();
-        Task<int> GetWeekIntensityAsync();
+        Task<List<WeekReport>> GetWeekReportsAsync();
         Task<List<DayReport>> GetAllDayReportsAsync();
 
 
